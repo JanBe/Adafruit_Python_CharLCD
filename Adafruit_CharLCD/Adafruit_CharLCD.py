@@ -232,7 +232,11 @@ class Adafruit_CharLCD(object):
         self.write8(LCD_ENTRYMODESET | self.displaymode)
 
     def message(self, text):
-        """Write text to display.  Note that text can include newlines."""
+        """Write text to display.  Note that text can include newlines.
+        The message will always start on the first character of the first line.
+        Note that it does not clear the LCD by itself, therefore you may still
+        encounter fragment from previous messages, in case they were longer.
+        """
         line = 0
         # Move to left or right side depending on text direction.
         col = 0 if self.displaymode & LCD_ENTRYLEFT > 0 else self._cols-1
