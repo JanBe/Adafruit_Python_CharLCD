@@ -234,6 +234,8 @@ class Adafruit_CharLCD(object):
     def message(self, text):
         """Write text to display.  Note that text can include newlines."""
         line = 0
+        # Ensure that the cursor is on the first character of the first line
+        self.set_cursor(0, line)
         # Iterate through each character.
         for char in text:
             # Advance to next line if character is a new line.
